@@ -23,12 +23,12 @@
         <div class="flex items-center">
             <img class="h-10" src="assets/Group.png" alt="">
             <div class="ml-1">
-                <h2 class="text-[18px] font-semibold">$45000</h2>
+                <h2 class="font-semibold" >$<span class="text-[18px] font-semibold">45000</span></h2>
                 <p class="text-[14px] text-[#08080880]">Available Balance</p>
         </div>
         </div>
         <div>
-            <button class="text-[14px] text-[#08080880] border-[#08080880] border-[1px] py-2 px-3 rounded-md">Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+            <button id="log-out" class="text-[14px] text-[#08080880] border-[#08080880] border-[1px] py-2 px-3 rounded-md cursor-pointer">Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         </div>
     </nav>
 
@@ -76,6 +76,10 @@
       </form>
 
 
-    
+    <script>
+        document.getElementById('log-out').addEventListener("click",function(){
+            window.location.href='./index.html'
+        })
+    </script>
   </body>
 </html>
