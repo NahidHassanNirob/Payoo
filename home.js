@@ -5,6 +5,27 @@ document.getElementById("log-out").addEventListener("click", function () {
 const validPin = 1234;
 const couponCode = 769007;
 
+// function for toggle
+function toggle(id) {
+  const froms = document.getElementsByClassName("from");
+  for (const fro of froms) {
+    fro.style.display = "none";
+  }
+  document.getElementById(id).style.display = "block";
+}
+
+function styles(id) {
+  const btns = document.getElementsByClassName("button");
+  for (const btn of btns) {
+    btn.classList.remove("Button");
+  }
+  document.getElementById(id).classList.add("Button");
+}
+
+// transaction secion
+const transactionData=[];
+console.log(transactionData);
+
 // add money button function
 document
   .getElementById("add-money-btn-buttom")
@@ -40,6 +61,12 @@ document
     const tottalCurrentBalance = amount + currentBallance;
     document.getElementById("current-ballance").innerText =
       tottalCurrentBalance;
+
+    const data = {
+      name: "Add Money",
+      date: new Date().toLocaleTimeString()
+    };
+    transactionData.push(data);
 
     document.getElementById("bank-name").value = "";
     document.getElementById("account-number").value = "";
@@ -78,6 +105,12 @@ document.getElementById("withdraw-btn").addEventListener("click", function () {
   // minus amount
   const tottalCurrentBalance = currentBalance - cashoutAmount;
   document.getElementById("current-ballance").innerText = tottalCurrentBalance;
+
+    const data = {
+      name: "Cash Out",
+      date: new Date().toLocaleTimeString(),
+    };
+    transactionData.push(data);
 
   // empty input
   document.getElementById("agent-number").value = "";
@@ -120,6 +153,12 @@ document.getElementById("send-now").addEventListener("click", function () {
 
   const tottalCurrentBalance = currentBalance - transferAmount;
   document.getElementById("current-ballance").innerText = tottalCurrentBalance;
+
+    const data = {
+      name: "Transfer Money",
+      date: new Date().toLocaleTimeString(),
+    };
+    transactionData.push(data);
 });
 
 // get bonus function
@@ -133,183 +172,87 @@ document.getElementById("get-bonus").addEventListener("click", function () {
     return;
   }
 
-  // fix: bonus add korte hobe, minus na
   const tottalCurrentBalance = currentBalance + 200;
   document.getElementById("current-ballance").innerText = tottalCurrentBalance;
+
+    const data = {
+      name: "Get Bonus",
+      date: new Date().toLocaleTimeString(),
+    };
+    transactionData.push(data);
+
   document.getElementById("Coupon-btn").value = "";
 });
 
 // bill pay function
-document.getElementById("Pay-Bill-btn").addEventListener("click",function(){
+document
+  .getElementById("Pay-Bill-btn")
+  .addEventListener("click", function () {});
 
-})
+// bill pay function
+document.getElementById("Pay-Bill-btn").addEventListener("click", function () {
+  const selectPay = document.getElementById("select-to-pay").value;
+  const billerAcNum = parseInt(
+    document.getElementById("biller-account-number").value
+  );
+  const amountToPay = parseInt(document.getElementById("pay-amount").value);
+  const billerPin = parseInt(document.getElementById("pay-pin-number").value);
+
+    const data = {
+      name: "Bill Pay",
+      date: new Date().toLocaleTimeString(),
+    };
+    transactionData.push(data);
+});
 
 //........... toggole function.........
 
-// add money
+// .....add money
+
 document.getElementById("add-money-btn").addEventListener("click", function () {
-  // display none sections
-  document.getElementById("cashout-section").style.display = "none";
-  document.getElementById("transfer-money-section").style.display = "none";
-  document.getElementById("bill-pay-section").style.display = "none";
+  // all section disply none
+  toggle("add-money-section");
 
-  //  disply block section
-  document.getElementById("add-money-section").style.display = "block";
-
-  document.getElementById("add-money-btn").style.backgroundColor = "#F3F8FE";
-  document.getElementById("add-money-btn").style.border = "1px solid #0874F2";
-  document.getElementById("add-money-title").style.color = "blue";
-
-  // ..........all sections style none.......
-  // cash out style none
-  document.getElementById("cash-out-btn").style.backgroundColor = "";
-  document.getElementById("cash-out-btn").style.border = "";
-  document.getElementById("cash-out-title").style.color = "";
-
-  // transfer section style none
-  document.getElementById("transfer-btn").style.backgroundColor = "";
-  document.getElementById("transfer-btn").style.border = "";
-  document.getElementById("transfer-btn").style.color = "";
-  // get coupon style none
-  document.getElementById("get-bonus-btn").style.backgroundColor = "";
-  document.getElementById("get-bonus-btn").style.border = "";
-  document.getElementById("get-bonus-btn").style.color = "";
+  // style function call
+  styles("add-money-btn");
 });
 
-// cashout
+// .....................cashout...............
+
 document.getElementById("cash-out-btn").addEventListener("click", function () {
-  // disply none sections
-  document.getElementById("add-money-section").style.display = "none";
-  document.getElementById("get-bonus-section").style.display = "none";
-  document.getElementById("bill-pay-section").style.display = "none";
+  // all section disply none
+  toggle("cashout-section");
 
-  document.getElementById("transfer-money-section").style.display = "none";
-
-  // disply block sections
-  document.getElementById("cashout-section").style.display = "block";
-
-  document.getElementById("cash-out-btn").style.backgroundColor = "#F3F8FE";
-  document.getElementById("cash-out-btn").style.border = "1px solid #0874F2";
-  document.getElementById("cash-out-title").style.color = "blue";
-
-  // ...........all sections style none..............
-
-  // add money style none
-  document.getElementById("add-money-btn").style.backgroundColor = "";
-  document.getElementById("add-money-btn").style.border = "";
-  document.getElementById("add-money-title").style.color = "";
-  // trasnfer money style none
-  document.getElementById("transfer-btn").style.backgroundColor = "";
-  document.getElementById("transfer-btn").style.border = "";
-  document.getElementById("transfer-btn").style.color = "";
-  // get coupon style none
-  document.getElementById("get-bonus-btn").style.backgroundColor = "";
-  document.getElementById("get-bonus-btn").style.border = "";
-  document.getElementById("get-bonus-btn").style.color = "";
-  document.getElementById("bill-pay-btn").style.backgroundColor = "";
-  document.getElementById("bill-pay-btn").style.border = "";
-  document.getElementById("bill-pay-btn").style.color = "";
+  // style function call
+  styles("cash-out-btn");
 });
 
-// transfer money
+// ......................transfer money.............
+
 document.getElementById("transfer-btn").addEventListener("click", function () {
-  // disply none sections
-  document.getElementById("add-money-section").style.display = "none";
-  document.getElementById("cashout-section").style.display = "none";
-  document.getElementById("get-bonus-section").style.display = "none";
-  document.getElementById("bill-pay-section").style.display = "none";
+  // all section disply none
+  toggle("transfer-money-section");
 
-  // display block section
-  document.getElementById("transfer-money-section").style.display = "block";
-
-  // won style
-  document.getElementById("transfer-btn").style.backgroundColor = "#F3F8FE";
-  document.getElementById("transfer-btn").style.border = "1px solid #0874F2";
-  document.getElementById("transfer-btn").style.color = "blue";
-
-  // ...........all none style scetions.............
-  // add money style none
-  document.getElementById("add-money-btn").style.backgroundColor = "";
-  document.getElementById("add-money-btn").style.border = "";
-  document.getElementById("add-money-title").style.color = "";
-
-  // cash out style none
-  document.getElementById("cash-out-btn").style.backgroundColor = "";
-  document.getElementById("cash-out-btn").style.border = "";
-  document.getElementById("cash-out-title").style.color = "";
-  // get coupon style none
-  document.getElementById("get-bonus-btn").style.backgroundColor = "";
-  document.getElementById("get-bonus-btn").style.border = "";
-  document.getElementById("get-bonus-btn").style.color = "";
-  document.getElementById("bill-pay-btn").style.backgroundColor = "";
-  document.getElementById("bill-pay-btn").style.border = "";
-  document.getElementById("bill-pay-btn").style.color = "";
+  // style function call
+  styles("transfer-btn");
 });
 
-// get coupon section
+// ....................get coupon section................
+
 document.getElementById("get-bonus-btn").addEventListener("click", function () {
-  // display none section
-  document.getElementById("add-money-section").style.display = "none";
-  document.getElementById("cashout-section").style.display = "none";
-  document.getElementById("transfer-money-section").style.display = "none";
-  document.getElementById("bill-pay-section").style.display = "none";
+  // all section disply none
+  toggle("get-bonus-section");
 
-  // display block secton
-  document.getElementById("get-bonus-section").style.display = "block";
-
-  // ...... all none style section.....
-  document.getElementById("add-money-btn").style.backgroundColor = "";
-  document.getElementById("add-money-btn").style.border = "";
-  document.getElementById("add-money-title").style.color = "";
-  // cash out style none
-  document.getElementById("cash-out-btn").style.backgroundColor = "";
-  document.getElementById("cash-out-btn").style.border = "";
-  document.getElementById("cash-out-title").style.color = "";
-  // transfer money style none
-  document.getElementById("transfer-btn").style.backgroundColor = "";
-  document.getElementById("transfer-btn").style.border = "";
-  document.getElementById("transfer-btn").style.color = "";
-   document.getElementById("bill-pay-btn").style.backgroundColor = "";
-   document.getElementById("bill-pay-btn").style.border = "";
-   document.getElementById("bill-pay-btn").style.color = "";
-
-  // won style
-  document.getElementById("get-bonus-btn").style.backgroundColor = "#F3F8FE";
-  document.getElementById("get-bonus-btn").style.border = "1px solid #0874F2";
-  document.getElementById("get-bonus-btn").style.color = "blue";
+  // style function call
+  styles("get-bonus-btn");
 });
 
+// ......................pay bill section....................
 
-// pay bill section
-document.getElementById("bill-pay-btn").addEventListener("click",function(){
-  // display none section
-   document.getElementById("add-money-section").style.display = "none";
-   document.getElementById("cashout-section").style.display = "none";
-   document.getElementById("transfer-money-section").style.display = "none";
-   document.getElementById("get-bonus-section").style.display = "none";
+document.getElementById("bill-pay-btn").addEventListener("click", function () {
+  // all section disply none
+  toggle("bill-pay-section");
 
-
-  // display block section 
-  document.getElementById("bill-pay-section").style.display='block';
-  // .......all style none section......
-  document.getElementById("add-money-btn").style.backgroundColor = "";
-  document.getElementById("add-money-btn").style.border = "";
-  document.getElementById("add-money-title").style.color = "";
-  // cash out style none
-  document.getElementById("cash-out-btn").style.backgroundColor = "";
-  document.getElementById("cash-out-btn").style.border = "";
-  document.getElementById("cash-out-title").style.color = "";
-  // transfer money style none
-  document.getElementById("transfer-btn").style.backgroundColor = "";
-  document.getElementById("transfer-btn").style.border = "";
-  document.getElementById("transfer-btn").style.color = "";
-  document.getElementById("get-bonus-btn").style.backgroundColor = "";
-  document.getElementById("get-bonus-btn").style.border = "";
-  document.getElementById("get-bonus-btn").style.color = "";
-
-
-  // won style section
-  document.getElementById("bill-pay-btn").style.backgroundColor = "#F3F8FE";
-  document.getElementById("bill-pay-btn").style.border = "1px solid #0874F2";
-  document.getElementById("bill-pay-btn").style.color = "blue";
-})
+  // style function call
+  styles("bill-pay-btn");
+});
