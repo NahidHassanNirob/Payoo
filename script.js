@@ -1,6 +1,6 @@
 // loging button function
 document.getElementById('login-btn').addEventListener('click',function(){
-    const mobileNum=12345678910;
+    const mobileNum=123456789;
     const pinNum=1234;
 
     const userMobileNum=document.getElementById('Mobile-number').value;
@@ -12,7 +12,7 @@ document.getElementById('login-btn').addEventListener('click',function(){
         window.location.href='./home.html'
     }
     else{
-        alert('Invalid Number Pin')
+        alert('Invalid Number & Pin')
     }
 
 

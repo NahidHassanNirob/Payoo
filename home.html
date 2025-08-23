@@ -62,27 +62,27 @@
       </div>
 
       <div class="grid grid-cols-3 gap-2">
-        <div class="border-[#0874F2] border-[1px] py-5 px-2 rounded-md shadow-md bg-[#F3F8FE]">
+        <div id="add-money-btn" class=" border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md cursor-pointer hover:border-[#0874F2] transition-all">
           <img class="mx-auto" src="assets/wallet1.png" alt="" />
-          <h2 class="text-[14px] text-center mt-1 text-blue-500 font-semibold ">Add Money</h2>
+          <h2 id="add-money-title" class="text-[14px] text-center mt-1 ">Add Money</h2>
         </div>
-        <div id="cash-out-click" class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md cursor-pointer hover:border-[#0874F2] transition-colors">
+        <div id="cash-out-btn" class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md cursor-pointer hover:border-[#0874F2] transition-all">
           <img class="mx-auto" src="assets/send1.png" alt="" />
-          <h2 class="text-[14px] text-center mt-1">Cashout</h2>
+          <h2 id="cash-out-title" class="text-[14px] text-center mt-1">Cashout</h2>
         </div>
-        <div class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md  hover:border-[#0874F2] transition-colors cursor-pointer">
+        <div id="transfer-btn" class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md  hover:border-[#0874F2] transition-all cursor-pointer">
           <img class="mx-auto" src="assets/money1.png" alt="" />
           <h2 class="text-[14px] text-center">Transfer</h2>
         </div>
-        <div class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md hover:border-[#0874F2] transition-colors cursor-pointer">
+        <div id="get-bonus-btn" class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md hover:border-[#0874F2] transition-all cursor-pointer">
           <img class="mx-auto" src="assets/bonus1.png" alt="" />
           <h2 class="text-[14px] text-center mt-1">Get bonus</h2>
         </div>
-        <div class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md hover:border-[#0874F2] transition-colors cursor-pointer">
+        <div id="bill-pay-btn" class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md hover:border-[#0874F2] transition-all cursor-pointer">
           <img class="mx-auto" src="assets/purse1.png" alt="" />
           <h2 class="text-[14px] text-center mt-1">Bill pay</h2>
         </div>
-        <div class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md hover:border-[#0874F2] transition-colors cursor-pointer">
+        <div id="transaction-btn" class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md hover:border-[#0874F2] transition-all cursor-pointer">
           <img class="mx-auto" src="assets/transaction1.png" alt="" />
           <h2 class="text-[14px] text-center mt-1">transaction</h2>
         </div>
@@ -90,7 +90,8 @@
     </div>
 
     <!-- add money -->
-    <div class="max-w-lg mx-auto">
+    <div id="add-money-section" class="hidden">
+      <div class="max-w-lg mx-auto">
       <h2 class="text=[16px] m-4 font-semibold">Add Money</h2>
     </div>
     <form class="max-w-lg mx-auto p-6 bg-white">
@@ -110,15 +111,60 @@
       <input id="add-amount" class="my-2 w-full px-4 py-2 rounded-[32px]  border   focus:outline-none bg-[#F4F5F7] border-[#E0E0E0]" type="number" placeholder="Add Amount to withdraw" required> <br>
       <label class="font-semibold" for="pin">Pin Number</label> <br>
       <input id="pin-number" class="my-2 w-full px-4 py-2 rounded-[32px]  border   focus:outline-none bg-[#F4F5F7] border-[#E0E0E0]" type="password" placeholder="Enter pin number" required> <br>
-      <button type="button" id="add-money-btn"
+      <button type="button" id="add-money-btn-buttom"
         
         class="w-full py-2 px-4 bg-[#0874F2] text-white rounded-[32px] font-semibold text-[18px] cursor-pointer mt-4"
       >
        Add Money
       </button>
     </form>
+    </div>
 
+    <!-- cashout -->
+     <div id="cashout-section" class="hidden">
+      <div  class="max-w-lg mx-auto">
+      <h2 class="text=[16px] m-4 font-semibold">Cash Out</h2>
+    </div>
+    <form class="max-w-lg mx-auto p-6 bg-white">
+   
+      <label class="font-semibold" for="accont">Agent Number</label> <br>
+      <input id="agent-number"  class="my-2 w-full px-4 py-2 rounded-[32px]  border   focus:outline-none bg-[#F4F5F7] border-[#E0E0E0]" type="password"  placeholder="Enter agent number" required> <br>
+      <label  class="font-semibold"  for="">Amount to Add</label> <br>
+      <input id="cashout-amount" class="my-2 w-full px-4 py-2 rounded-[32px]  border   focus:outline-none bg-[#F4F5F7] border-[#E0E0E0]" type="number" placeholder="Enter Amount to withdraw" required> <br>
+      <label class="font-semibold" for="pin">Pin Number</label> <br>
+      <input id="withdraw-pin-num" class="my-2 w-full px-4 py-2 rounded-[32px]  border   focus:outline-none bg-[#F4F5F7] border-[#E0E0E0]" type="password" placeholder="Enter pin number" required> <br>
+      <button type="button" id="withdraw-btn"
+        
+        class="w-full py-2 px-4 bg-[#0874F2] text-white rounded-[32px] font-semibold text-[18px] cursor-pointer mt-4"
+      >
+       Withdraw Money
+      </button>
+    </form>
+     </div>
+
+     <!-- transfer money -->
+      <div id="transfer-money-section" class="hidden">
+      <div class="max-w-lg mx-auto">
+      <h2 class="text=[16px] m-4 font-semibold">Transfer Money</h2>
+      </div>
+     <form class="max-w-lg mx-auto p-6 bg-white">
+   
+      <label class="font-semibold" for="accont">User Account Number</label> <br>
+      <input id="User-Account-Number"  class="my-2 w-full px-4 py-2 rounded-[32px]  border   focus:outline-none bg-[#F4F5F7] border-[#E0E0E0]" type="password"  placeholder="Enter agent number" required> <br>
+      <label  class="font-semibold"  for="">Amount</label> <br>
+      <input id="transfer-amount" class="my-2 w-full px-4 py-2 rounded-[32px]  border   focus:outline-none bg-[#F4F5F7] border-[#E0E0E0]" type="number" placeholder="Enter Amount to transfer " required> <br>
+      <label class="font-semibold" for="pin">Pin Number</label> <br>
+      <input id="transfer-pin-number" class="my-2 w-full px-4 py-2 rounded-[32px]  border   focus:outline-none bg-[#F4F5F7] border-[#E0E0E0]" type="password" placeholder="Enter pin number" required> <br>
+      <button type="button" id="send-now"
+        
+        class="w-full py-2 px-4 bg-[#0874F2] text-white rounded-[32px] font-semibold text-[18px] cursor-pointer mt-4"
+      >
+       Send Now
+      </button>
+    </form>
+      </div>
+r
     
-    <script src="home.js"></script>
+    <script src="./home.js"></script>
   </body>
 </html>
