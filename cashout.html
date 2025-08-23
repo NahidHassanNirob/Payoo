@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payoo</title>
+     <!-- desei ui cdn  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- tailwind cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+</head>
+<body class="bg-[#F4F5F7] min-h-screen">
+    <!-- navbar -->
+    <nav
+      class="flex justify-between items-center p-4 bg-white border-b border-[#b9b6b680] max-w-lg mx-auto"
+    >
+      <div class="flex items-center">
+        <img class="h-10" src="assets/Group.png" alt="" />
+        <div class="ml-1">
+          <h2 class="font-semibold">
+            $<span id="current-ballance" class="text-[18px] font-semibold">45000</span>
+          </h2>
+          <p class="text-[14px] text-[#08080880]">Available Balance</p>
+        </div>
+      </div>
+      <div>
+        <button
+          id="log-out"
+          class="text-[14px] text-[#08080880] border-[#08080880] border-[1px] py-2 px-3 rounded-md cursor-pointer"
+        >
+          <i class="fa-solid fa-arrow-right-from-bracket rotate-180"></i> Log
+          Out
+        </button>
+      </div>
+    </nav>
+
+    <!-- welcome to payoo -->
+    <div class="bg-white w-full p-4 rounded-md max-w-lg mx-auto">
+      <div class="mt-9">
+        <h2 class="font-bold">
+          <i class="fa-solid fa-fire-flame-curved" style="color: #ffd43b"></i
+          >Welcome to Payoo!
+        </h2>
+        <p class="my-3 text-[#08080880] text-justify">
+          Enjoy easy and convenient financial services with us. Cashout charge
+          is low and
+        </p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-2">
+        <div class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md hover:border-[#0874F2] transition-colors cursor-pointer  ">
+          <img class="mx-auto" src="assets/wallet1.png" alt="" />
+          <h2 class="text-[14px] text-center mt-1   ">Add Money</h2>
+        </div>
+        <div id="cash-out-click" class="border-[#0874F2] border-[1px] py-5 px-2 rounded-md cursor-pointer hover:border-[#0874F2] transition-colors  bg-[#F3F8FE]  shadow-md">
+          <img class="mx-auto" src="assets/send1.png" alt="" />
+          <h2 class="text-[14px] text-center mt-1 font-semibold">Cashout</h2>
+        </div>
+        <div class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md  hover:border-[#0874F2] transition-colors cursor-pointer">
+          <img class="mx-auto" src="assets/money1.png" alt="" />
+          <h2 class="text-[14px] text-center">Transfer</h2>
+        </div>
+        <div class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md hover:border-[#0874F2] transition-colors cursor-pointer">
+          <img class="mx-auto" src="assets/bonus1.png" alt="" />
+          <h2 class="text-[14px] text-center mt-1">Get bonus</h2>
+        </div>
+        <div class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md hover:border-[#0874F2] transition-colors cursor-pointer">
+          <img class="mx-auto" src="assets/purse1.png" alt="" />
+          <h2 class="text-[14px] text-center mt-1">Bill pay</h2>
+        </div>
+        <div class="border-[#b9b6b680] border-[1px] py-5 px-2 rounded-md hover:border-[#0874F2] transition-colors cursor-pointer">
+          <img class="mx-auto" src="assets/transaction1.png" alt="" />
+          <h2 class="text-[14px] text-center mt-1">transaction</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- cash out -->
+      
+    
+
+    <script src="cashout.js"></script>
+</body>
+</html>

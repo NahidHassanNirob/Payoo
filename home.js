@@ -3,7 +3,7 @@ document.getElementById("log-out").addEventListener("click", function () {
   window.location.href = "./index.html";
 });
 const validPin = 1234;
-const couponCode=769007;
+const couponCode = 769007;
 
 // add money button function
 document
@@ -18,13 +18,23 @@ document
     const currentBallance = parseInt(
       document.getElementById("current-ballance").innerText
     );
+
+    //  pin check
     if (pin !== validPin) {
       alert("please provide valid pin");
       return;
     }
 
+    // account number check
     if (accountNumber.length !== 11) {
       alert("Invalid AC number");
+      return;
+    }
+
+    // amount validation
+    if (isNaN(amount) || amount <= 0) {
+      alert("Enter a valid amount");
+      return;
     }
 
     const tottalCurrentBalance = amount + currentBallance;
@@ -45,12 +55,28 @@ document.getElementById("withdraw-btn").addEventListener("click", function () {
   );
   const pin = parseInt(document.getElementById("withdraw-pin-num").value);
 
-  // minus amount
   const currentBalance = parseInt(
     document.getElementById("current-ballance").innerText
   );
-  const tottalCurrentBalance = currentBalance - cashoutAmount;
 
+  //  pin check
+  if (pin !== validPin) {
+    alert("Invalid Pin");
+    return;
+  }
+
+  //  amount & balance check
+  if (isNaN(cashoutAmount) || cashoutAmount <= 0) {
+    alert("Enter a valid amount");
+    return;
+  }
+  if (cashoutAmount > currentBalance) {
+    alert("Insufficient Balance");
+    return;
+  }
+
+  // minus amount
+  const tottalCurrentBalance = currentBalance - cashoutAmount;
   document.getElementById("current-ballance").innerText = tottalCurrentBalance;
 
   // empty input
@@ -60,7 +86,6 @@ document.getElementById("withdraw-btn").addEventListener("click", function () {
 });
 
 // transfer money function
-
 document.getElementById("send-now").addEventListener("click", function () {
   const userAccount = document.getElementById("User-Account-Number").value;
   const transferAmount = parseInt(
@@ -78,35 +103,55 @@ document.getElementById("send-now").addEventListener("click", function () {
     alert("Invalid Pin");
     return;
   }
+
   const currentBalance = parseInt(
     document.getElementById("current-ballance").innerText
   );
+
+  //  amount validation
+  if (isNaN(transferAmount) || transferAmount <= 0) {
+    alert("Enter a valid amount");
+    return;
+  }
+  if (transferAmount > currentBalance) {
+    alert("Insufficient Balance");
+    return;
+  }
+
   const tottalCurrentBalance = currentBalance - transferAmount;
   document.getElementById("current-ballance").innerText = tottalCurrentBalance;
 });
 
 // get bonus function
-document.getElementById('get-bonus').addEventListener("click",function(){
-  const coupon=parseInt(document.getElementById('Coupon-btn').value);
-  const currentBalance=parseInt(document.getElementById('current-ballance').innerText);
-  if(coupon!==couponCode){
-    alert('Enter Valid Coupon Code')
+document.getElementById("get-bonus").addEventListener("click", function () {
+  const coupon = parseInt(document.getElementById("Coupon-btn").value);
+  const currentBalance = parseInt(
+    document.getElementById("current-ballance").innerText
+  );
+  if (coupon !== couponCode) {
+    alert("Enter Valid Coupon Code");
     return;
   }
-  const tottalCurrentBalance=currentBalance-200;
-   document.getElementById("current-ballance").innerText = tottalCurrentBalance;
-   document.getElementById('Coupon-btn').value='';
+
+  // fix: bonus add korte hobe, minus na
+  const tottalCurrentBalance = currentBalance + 200;
+  document.getElementById("current-ballance").innerText = tottalCurrentBalance;
+  document.getElementById("Coupon-btn").value = "";
+});
+
+// bill pay function
+document.getElementById("Pay-Bill-btn").addEventListener("click",function(){
 
 })
 
 //........... toggole function.........
 
 // add money
-
 document.getElementById("add-money-btn").addEventListener("click", function () {
   // display none sections
   document.getElementById("cashout-section").style.display = "none";
   document.getElementById("transfer-money-section").style.display = "none";
+  document.getElementById("bill-pay-section").style.display = "none";
 
   //  disply block section
   document.getElementById("add-money-section").style.display = "block";
@@ -136,6 +181,7 @@ document.getElementById("cash-out-btn").addEventListener("click", function () {
   // disply none sections
   document.getElementById("add-money-section").style.display = "none";
   document.getElementById("get-bonus-section").style.display = "none";
+  document.getElementById("bill-pay-section").style.display = "none";
 
   document.getElementById("transfer-money-section").style.display = "none";
 
@@ -160,6 +206,9 @@ document.getElementById("cash-out-btn").addEventListener("click", function () {
   document.getElementById("get-bonus-btn").style.backgroundColor = "";
   document.getElementById("get-bonus-btn").style.border = "";
   document.getElementById("get-bonus-btn").style.color = "";
+  document.getElementById("bill-pay-btn").style.backgroundColor = "";
+  document.getElementById("bill-pay-btn").style.border = "";
+  document.getElementById("bill-pay-btn").style.color = "";
 });
 
 // transfer money
@@ -168,6 +217,7 @@ document.getElementById("transfer-btn").addEventListener("click", function () {
   document.getElementById("add-money-section").style.display = "none";
   document.getElementById("cashout-section").style.display = "none";
   document.getElementById("get-bonus-section").style.display = "none";
+  document.getElementById("bill-pay-section").style.display = "none";
 
   // display block section
   document.getElementById("transfer-money-section").style.display = "block";
@@ -191,19 +241,21 @@ document.getElementById("transfer-btn").addEventListener("click", function () {
   document.getElementById("get-bonus-btn").style.backgroundColor = "";
   document.getElementById("get-bonus-btn").style.border = "";
   document.getElementById("get-bonus-btn").style.color = "";
+  document.getElementById("bill-pay-btn").style.backgroundColor = "";
+  document.getElementById("bill-pay-btn").style.border = "";
+  document.getElementById("bill-pay-btn").style.color = "";
 });
 
-
 // get coupon section
-document.getElementById('get-bonus-btn').addEventListener("click",function(){
+document.getElementById("get-bonus-btn").addEventListener("click", function () {
   // display none section
   document.getElementById("add-money-section").style.display = "none";
   document.getElementById("cashout-section").style.display = "none";
-   document.getElementById("transfer-money-section").style.display = "none";
-
+  document.getElementById("transfer-money-section").style.display = "none";
+  document.getElementById("bill-pay-section").style.display = "none";
 
   // display block secton
-  document.getElementById("get-bonus-section").style.display='block'
+  document.getElementById("get-bonus-section").style.display = "block";
 
   // ...... all none style section.....
   document.getElementById("add-money-btn").style.backgroundColor = "";
@@ -217,11 +269,47 @@ document.getElementById('get-bonus-btn').addEventListener("click",function(){
   document.getElementById("transfer-btn").style.backgroundColor = "";
   document.getElementById("transfer-btn").style.border = "";
   document.getElementById("transfer-btn").style.color = "";
+   document.getElementById("bill-pay-btn").style.backgroundColor = "";
+   document.getElementById("bill-pay-btn").style.border = "";
+   document.getElementById("bill-pay-btn").style.color = "";
 
   // won style
-   document.getElementById("get-bonus-btn").style.backgroundColor = "#F3F8FE";
-   document.getElementById("get-bonus-btn").style.border = "1px solid #0874F2";
-   document.getElementById("get-bonus-btn").style.color = "blue";
+  document.getElementById("get-bonus-btn").style.backgroundColor = "#F3F8FE";
+  document.getElementById("get-bonus-btn").style.border = "1px solid #0874F2";
+  document.getElementById("get-bonus-btn").style.color = "blue";
+});
 
 
+// pay bill section
+document.getElementById("bill-pay-btn").addEventListener("click",function(){
+  // display none section
+   document.getElementById("add-money-section").style.display = "none";
+   document.getElementById("cashout-section").style.display = "none";
+   document.getElementById("transfer-money-section").style.display = "none";
+   document.getElementById("get-bonus-section").style.display = "none";
+
+
+  // display block section 
+  document.getElementById("bill-pay-section").style.display='block';
+  // .......all style none section......
+  document.getElementById("add-money-btn").style.backgroundColor = "";
+  document.getElementById("add-money-btn").style.border = "";
+  document.getElementById("add-money-title").style.color = "";
+  // cash out style none
+  document.getElementById("cash-out-btn").style.backgroundColor = "";
+  document.getElementById("cash-out-btn").style.border = "";
+  document.getElementById("cash-out-title").style.color = "";
+  // transfer money style none
+  document.getElementById("transfer-btn").style.backgroundColor = "";
+  document.getElementById("transfer-btn").style.border = "";
+  document.getElementById("transfer-btn").style.color = "";
+  document.getElementById("get-bonus-btn").style.backgroundColor = "";
+  document.getElementById("get-bonus-btn").style.border = "";
+  document.getElementById("get-bonus-btn").style.color = "";
+
+
+  // won style section
+  document.getElementById("bill-pay-btn").style.backgroundColor = "#F3F8FE";
+  document.getElementById("bill-pay-btn").style.border = "1px solid #0874F2";
+  document.getElementById("bill-pay-btn").style.color = "blue";
 })
