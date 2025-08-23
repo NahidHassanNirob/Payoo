@@ -3,6 +3,7 @@ document.getElementById("log-out").addEventListener("click", function () {
   window.location.href = "./index.html";
 });
 const validPin = 1234;
+const couponCode=769007;
 
 // add money button function
 document
@@ -84,6 +85,20 @@ document.getElementById("send-now").addEventListener("click", function () {
   document.getElementById("current-ballance").innerText = tottalCurrentBalance;
 });
 
+// get bonus function
+document.getElementById('get-bonus').addEventListener("click",function(){
+  const coupon=parseInt(document.getElementById('Coupon-btn').value);
+  const currentBalance=parseInt(document.getElementById('current-ballance').innerText);
+  if(coupon!==couponCode){
+    alert('Enter Valid Coupon Code')
+    return;
+  }
+  const tottalCurrentBalance=currentBalance-200;
+   document.getElementById("current-ballance").innerText = tottalCurrentBalance;
+   document.getElementById('Coupon-btn').value='';
+
+})
+
 //........... toggole function.........
 
 // add money
@@ -100,8 +115,7 @@ document.getElementById("add-money-btn").addEventListener("click", function () {
   document.getElementById("add-money-btn").style.border = "1px solid #0874F2";
   document.getElementById("add-money-title").style.color = "blue";
 
-
-// ..........all sections style none.......
+  // ..........all sections style none.......
   // cash out style none
   document.getElementById("cash-out-btn").style.backgroundColor = "";
   document.getElementById("cash-out-btn").style.border = "";
@@ -111,13 +125,17 @@ document.getElementById("add-money-btn").addEventListener("click", function () {
   document.getElementById("transfer-btn").style.backgroundColor = "";
   document.getElementById("transfer-btn").style.border = "";
   document.getElementById("transfer-btn").style.color = "";
-
+  // get coupon style none
+  document.getElementById("get-bonus-btn").style.backgroundColor = "";
+  document.getElementById("get-bonus-btn").style.border = "";
+  document.getElementById("get-bonus-btn").style.color = "";
 });
 
 // cashout
 document.getElementById("cash-out-btn").addEventListener("click", function () {
   // disply none sections
   document.getElementById("add-money-section").style.display = "none";
+  document.getElementById("get-bonus-section").style.display = "none";
 
   document.getElementById("transfer-money-section").style.display = "none";
 
@@ -128,7 +146,7 @@ document.getElementById("cash-out-btn").addEventListener("click", function () {
   document.getElementById("cash-out-btn").style.border = "1px solid #0874F2";
   document.getElementById("cash-out-title").style.color = "blue";
 
-// ...........all sections style none..............
+  // ...........all sections style none..............
 
   // add money style none
   document.getElementById("add-money-btn").style.backgroundColor = "";
@@ -138,7 +156,10 @@ document.getElementById("cash-out-btn").addEventListener("click", function () {
   document.getElementById("transfer-btn").style.backgroundColor = "";
   document.getElementById("transfer-btn").style.border = "";
   document.getElementById("transfer-btn").style.color = "";
-
+  // get coupon style none
+  document.getElementById("get-bonus-btn").style.backgroundColor = "";
+  document.getElementById("get-bonus-btn").style.border = "";
+  document.getElementById("get-bonus-btn").style.color = "";
 });
 
 // transfer money
@@ -146,6 +167,7 @@ document.getElementById("transfer-btn").addEventListener("click", function () {
   // disply none sections
   document.getElementById("add-money-section").style.display = "none";
   document.getElementById("cashout-section").style.display = "none";
+  document.getElementById("get-bonus-section").style.display = "none";
 
   // display block section
   document.getElementById("transfer-money-section").style.display = "block";
@@ -165,4 +187,41 @@ document.getElementById("transfer-btn").addEventListener("click", function () {
   document.getElementById("cash-out-btn").style.backgroundColor = "";
   document.getElementById("cash-out-btn").style.border = "";
   document.getElementById("cash-out-title").style.color = "";
+  // get coupon style none
+  document.getElementById("get-bonus-btn").style.backgroundColor = "";
+  document.getElementById("get-bonus-btn").style.border = "";
+  document.getElementById("get-bonus-btn").style.color = "";
 });
+
+
+// get coupon section
+document.getElementById('get-bonus-btn').addEventListener("click",function(){
+  // display none section
+  document.getElementById("add-money-section").style.display = "none";
+  document.getElementById("cashout-section").style.display = "none";
+   document.getElementById("transfer-money-section").style.display = "none";
+
+
+  // display block secton
+  document.getElementById("get-bonus-section").style.display='block'
+
+  // ...... all none style section.....
+  document.getElementById("add-money-btn").style.backgroundColor = "";
+  document.getElementById("add-money-btn").style.border = "";
+  document.getElementById("add-money-title").style.color = "";
+  // cash out style none
+  document.getElementById("cash-out-btn").style.backgroundColor = "";
+  document.getElementById("cash-out-btn").style.border = "";
+  document.getElementById("cash-out-title").style.color = "";
+  // transfer money style none
+  document.getElementById("transfer-btn").style.backgroundColor = "";
+  document.getElementById("transfer-btn").style.border = "";
+  document.getElementById("transfer-btn").style.color = "";
+
+  // won style
+   document.getElementById("get-bonus-btn").style.backgroundColor = "#F3F8FE";
+   document.getElementById("get-bonus-btn").style.border = "1px solid #0874F2";
+   document.getElementById("get-bonus-btn").style.color = "blue";
+
+
+})
